@@ -60,4 +60,19 @@ contract MultiSigWallet {
 
         required = _required;
     }
+
+    receive() external payable {
+        emit Deposit(msg.sender, msg.value);
+    }
+
+    function submit(
+        address _to,
+        uint256 _value,
+        bytes calldata _data
+    ) external onlyOwner {
+        transactions.push(
+            Transaction({to: _to, value: _value, data: _data, executed: false})
+        );
+        emit Submit(Transactions.length - 1);
+    }
 }
