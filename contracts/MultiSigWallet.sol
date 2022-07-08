@@ -41,4 +41,13 @@ contract MultiSigWallet {
         require(transactions[_txId].executed, "tx already executed");
         _;
     }
+
+
+    constructor(address[] memory _owners, uint _required) {
+        require(_owners.length > 0, "Owners required");
+        require(
+            _required > 0 && _required <= _owners.length, 
+            "Invalid reequired number of owners"
+        );
+
 }
