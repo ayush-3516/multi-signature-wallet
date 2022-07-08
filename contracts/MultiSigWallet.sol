@@ -31,4 +31,9 @@ contract MultiSigWallet {
         require(_txId < transactions.length, "tx doesn't exist");
         _;
     }
+
+    modifier notApproved(uint256 _txId) {
+        require(!approved[_txId][msg.sender], "tx already approved");
+        _;
+    }
 }
