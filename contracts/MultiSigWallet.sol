@@ -18,4 +18,7 @@ contract MultiSigWallet {
     address[] public owners;
     mapping(address => bool) public isOwner;
     uint256 public required;
+
+    Transaction[] public transactions;
+    mapping(uint256 => mapping(address => bool)) public approved;
 }
