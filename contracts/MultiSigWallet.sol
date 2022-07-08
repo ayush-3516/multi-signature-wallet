@@ -36,4 +36,9 @@ contract MultiSigWallet {
         require(!approved[_txId][msg.sender], "tx already approved");
         _;
     }
+
+    modifier notExecuted(uint256 _txId) {
+        require(transactions[_txId].executed, "tx already executed");
+        _;
+    }
 }
