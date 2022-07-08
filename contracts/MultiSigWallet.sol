@@ -26,4 +26,9 @@ contract MultiSigWallet {
         require(isOwner[msg.sender], "not owner");
         _;
     }
+
+    modifier txExists(uint256 _txId) {
+        require(_txId < transactions.length, "tx doesn't exist");
+        _;
+    }
 }
