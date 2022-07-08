@@ -14,4 +14,8 @@ contract MultiSigWallet {
         bytes data;
         bool executed;
     }
+
+    address[] public owners;
+    mapping(address => bool) public isOwner;
+    uint256 public required;
 }
