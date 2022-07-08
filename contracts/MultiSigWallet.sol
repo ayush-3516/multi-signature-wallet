@@ -75,4 +75,15 @@ contract MultiSigWallet {
         );
         emit Submit(Transactions.length - 1);
     }
+
+    function approve(uint256 _txId)
+        external
+        onlyOwner
+        txExists(_txId)
+        notApproved(_txId)
+        notExecuted(_txId)
+    {
+        approved[_txId][msg.sender] = true;
+        emit Approve(msg.sender, _txId);
+    }
 }
