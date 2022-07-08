@@ -21,4 +21,9 @@ contract MultiSigWallet {
 
     Transaction[] public transactions;
     mapping(uint256 => mapping(address => bool)) public approved;
+
+    modifier onlyOwner() {
+        require(isOwner[msg.sender], "not owner");
+        _;
+    }
 }
