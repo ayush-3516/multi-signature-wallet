@@ -86,4 +86,16 @@ contract MultiSigWallet {
         approved[_txId][msg.sender] = true;
         emit Approve(msg.sender, _txId);
     }
+
+    function _getApprovalCount(uint256 _txId)
+        private
+        view
+        returns (uint256 count)
+    {
+        for (uint256 i; i < owners.length; i++) {
+            if (approved[_txId][owners[i]]) {
+                count += 1;
+            }
+        }
+    }
 }
