@@ -98,4 +98,22 @@ contract MultiSigWallet {
             }
         }
     }
+
+    function execite(uint256 _txId)
+        external
+        txExists(_txId)
+        notExecuted(_txId)
+    {
+        require(_getApprovalCount(_txId) >= required, "approvals < required");
+        Transaction storage transaction = transactions[_txId];
+
+        transaction.executed = true;
+
+        (bool success, ) = transaction.to.call{value: transaction.value}(
+            transaction.data
+        );
+        require(success, "tx failed");
+
+        emit Execute(_txId);
+    }
 }
