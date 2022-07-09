@@ -73,7 +73,7 @@ contract MultiSigWallet {
         transactions.push(
             Transaction({to: _to, value: _value, data: _data, executed: false})
         );
-        emit Submit(Transaction.length - 1);
+        emit Submit(transactions.length - 1);
     }
 
     function approve(uint256 _txId)
