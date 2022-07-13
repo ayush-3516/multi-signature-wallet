@@ -1,4 +1,7 @@
 //SPDX-License-Identifier: MIT
+
+// I made this contract to practice Solidity :)
+
 pragma solidity ^0.8.10;
 
 contract MultiSigWallet {
