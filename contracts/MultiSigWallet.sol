@@ -11,6 +11,7 @@ contract MultiSigWallet {
     event Revoke(address indexed owner, uint256 indexed txId);
     event Execute(uint256 indexed txId);
 
+    // This struct shows what data will be there in the Transaction
     struct Transaction {
         address to;
         uint256 value;
